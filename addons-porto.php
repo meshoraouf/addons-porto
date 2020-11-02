@@ -61,9 +61,10 @@ if ( ! defined( 'ABSPATH' ) ) {
      */
      function includes() {
 
+        require_once( __DIR__ . '/templates/home.php' );
 
          require_once( __DIR__ . '/header.php' );
-        //require_once( __DIR__ . '/controls/test-control.php' );
+        require_once( __DIR__ . '/home.php' );
 
   }
 
@@ -73,6 +74,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
     $this->includes(); 
     \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Header_Widget() );
+    \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Home_Widget() );
 
   }
 

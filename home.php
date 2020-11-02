@@ -1,10 +1,11 @@
+
 <?php
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
 
-class Elementor_oEmbed_Widget extends \Elementor\Widget_Base {
+class Elementor_Home_Widget extends \Elementor\Widget_Base {
 
     /**
      * Get widget name.
@@ -17,13 +18,13 @@ class Elementor_oEmbed_Widget extends \Elementor\Widget_Base {
      * @return string Widget name.
      */
     public function get_name() {
-        return 'oembed';
+        return 'section';
     }
 
     /**
      * Get widget title.
      *
-     * Retrieve oEmbed widget title.
+     * Retrieve header widget title.
      *
      * @since 1.0.0
      * @access public
@@ -31,7 +32,7 @@ class Elementor_oEmbed_Widget extends \Elementor\Widget_Base {
      * @return string Widget title.
      */
     public function get_title() {
-        return __( 'oEmbed', 'plugin-name' );
+        return __( 'Section', 'adons-porto' );
     }
 
     /**
@@ -45,7 +46,7 @@ class Elementor_oEmbed_Widget extends \Elementor\Widget_Base {
      * @return string Widget icon.
      */
     public function get_icon() {
-        return 'fa fa-code';
+        return 'fas fa-pen-alt';
     }
 
     /**
@@ -71,25 +72,42 @@ class Elementor_oEmbed_Widget extends \Elementor\Widget_Base {
      * @access protected
      */
     protected function _register_controls() {
-
         $this->start_controls_section(
-            'content_section',
-            [
-                'label' => __( 'Content', 'plugin-name' ),
-                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+			'porto_content_section',
+			[
+				'label' => __( 'Content', 'elementor' ),
+				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+
             ]
+          );
+            $this->add_control(
+                'porto_layout_section',
+                [
+                    'label' => __( 'Layout Section', 'elementor' ),
+                    'type' => \Elementor\Controls_Manager::SELECT,
+                    'default' => 'about',
+                    'options' => [
+                        'about'  => __( 'About', 'elementor' ),
+                        'skill' => __( 'Skill', 'elementor' ),
+                       
+                    ],
+                ]
+            );
+
+       
+
+        $this->end_controls_section();
+        
+		$this->start_controls_section(
+			'porto_style_section',
+			[
+				'label' => __( 'Style', 'elementor' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+
+			]
         );
 
-        $this->add_control(
-            'url',
-            [
-                'label' => __( 'URL to embed', 'plugin-name' ),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'input_type' => 'url',
-                'placeholder' => __( 'https://your-link.com', 'plugin-name' ),
-            ]
-        );
-
+        
         $this->end_controls_section();
 
     }
@@ -105,15 +123,16 @@ class Elementor_oEmbed_Widget extends \Elementor\Widget_Base {
     protected function render() {
 
         $settings = $this->get_settings_for_display();
+      
+           
+                
 
-        $html = wp_oembed_get( $settings['url'] );
-
-        echo '<div class="oembed-elementor-widget">';
-
-        echo ( $html ) ? $html : $settings['url'];
-
-        echo '</div>';
+          get_style($settings['porto_layout_section']);
+           
+        ?>
+       
+        <?php
 
     }
-
+ 
 }

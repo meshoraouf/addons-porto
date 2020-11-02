@@ -32,7 +32,7 @@ class Elementor_Header_Widget extends \Elementor\Widget_Base {
      * @return string Widget title.
      */
     public function get_title() {
-        return __( 'Header', 'adons-porto-name' );
+        return __( 'Header', 'adons-porto' );
     }
 
     /**
@@ -74,7 +74,7 @@ class Elementor_Header_Widget extends \Elementor\Widget_Base {
     protected function _register_controls() {
 
 		$this->start_controls_section(
-			'style_section',
+			'porto_style_header',
 			[
 				'label' => __( 'Style', 'elementor' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
