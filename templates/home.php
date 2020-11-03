@@ -6,7 +6,7 @@
     
 
      <!--Start About Section-->
-        <section class="about" id="about">
+        <section class="section_home_ele" id="about">
             <div class="container position-relative">
                  <h2 class="title_section text-center" >About</h2>
                        <h3 class="animated animated_scroll fadeInUp" style="animation-delay:0.3s">Hello! My Name is Michelle Raouf</h3>

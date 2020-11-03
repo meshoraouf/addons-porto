@@ -75,40 +75,13 @@ class Elementor_Home_Widget extends \Elementor\Widget_Base {
         $this->start_controls_section(
 			'porto_content_section',
 			[
-				'label' => __( 'Content', 'elementor' ),
+				'label' => __( 'Content', 'addons-porto' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 
             ]
           );
-            $this->add_control(
-                'porto_layout_section',
-                [
-                    'label' => __( 'Layout Section', 'elementor' ),
-                    'type' => \Elementor\Controls_Manager::SELECT,
-                    'default' => 'about',
-                    'options' => [
-                        'about'  => __( 'About', 'elementor' ),
-                        'skill' => __( 'Skill', 'elementor' ),
-                       
-                    ],
-                ]
-            );
 
-       
-
-        $this->end_controls_section();
-        
-		$this->start_controls_section(
-			'porto_style_section',
-			[
-				'label' => __( 'Style', 'elementor' ),
-				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
-
-			]
-        );
-
-        
-        $this->end_controls_section();
+          $this->end_controls_section();
 
     }
 
@@ -125,9 +98,9 @@ class Elementor_Home_Widget extends \Elementor\Widget_Base {
         $settings = $this->get_settings_for_display();
       
            
-                
-
-          get_style($settings['porto_layout_section']);
+        
+         echo  $settings['porto_layout_section'];
+        //  get_style($settings['porto_layout_section']);
            
         ?>
        

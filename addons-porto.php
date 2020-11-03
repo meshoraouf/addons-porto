@@ -22,12 +22,18 @@ if ( ! defined( 'ABSPATH' ) ) {
   
 
      function addons_porto() {
+         //style
+           
+         wp_register_script( 'vue-js', 'https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js', array(), _S_VERSION, false );
+
+   
+
 
         add_action( 'elementor/elements/categories_registered', [ $this, 'add_elementor_widget_categories' ] );
         add_action( 'init', [ $this, 'register_widgets' ] );
 
     }
-
+  
 	public function add_elementor_widget_categories( $elements_manager ) {
 		
 			$elements_manager->add_category(
@@ -60,9 +66,10 @@ if ( ! defined( 'ABSPATH' ) ) {
      * @access public
      */
      function includes() {
-
+         
+        require_once( __DIR__ . '/templates/header.php' );
         require_once( __DIR__ . '/templates/home.php' );
-
+    
          require_once( __DIR__ . '/header.php' );
         require_once( __DIR__ . '/home.php' );
 
