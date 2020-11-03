@@ -249,18 +249,65 @@ class Elementor_Header_Widget extends \Elementor\Widget_Base {
                     'default' => 'right',
                     'options' => [
                         'right'  => __( 'Right', 'addons-porto' ),
-                        'unset'  => __( 'Left', 'addons-porto' ),
-                     
+                        'Left'  => __( 'Left', 'addons-porto' ),
+                        'Unset'  => __( 'unset', 'addons-porto' ),
                        
                     ],
                 ]
            
-       );
+            );
    
+            $this->add_control(
+                'porto_icon_background',
+                [
+                    'label' => __( 'Icon Background', 'addons-porto' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    
+                     'scheme' => [
+                   'type' => \Elementor\Scheme_Color::get_type(),
+                   'value' => \Elementor\Scheme_Color::COLOR_1,
+               ],
+                  'selectors' => [
+                   '{{WRAPPER}} .header-nav-toggle' => 'background-color: {{VALUE}} !important',
+               ],
+                ]
+           
+            );
     
    
+            $this->add_control(
+                'porto_icon_color',
+                [
+                    'label' => __( 'Icon Color', 'addons-porto' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    
+                     'scheme' => [
+                   'type' => \Elementor\Scheme_Color::get_type(),
+                   'value' => \Elementor\Scheme_Color::COLOR_1,
+               ],
+                  'selectors' => [
+                   '{{WRAPPER}} .header-nav-toggle' => 'color: {{VALUE}} !important',
+               ],
+                ]
+           
+            );
      
-
+            $this->add_control(
+                'porto_icon_color_border',
+                [
+                    'label' => __( 'Icon Color Border', 'addons-porto' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    
+                     'scheme' => [
+                   'type' => \Elementor\Scheme_Color::get_type(),
+                   'value' => \Elementor\Scheme_Color::COLOR_1,
+               ],
+                  'selectors' => [
+                   '{{WRAPPER}} .header-nav-toggle' => 'border-color: {{VALUE}} !important',
+               ],
+                ]
+           
+            );
         $this->end_controls_section();
 
 
