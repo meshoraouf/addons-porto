@@ -1,4 +1,3 @@
-
 <?php
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -224,9 +223,72 @@ class Elementor_Header_Widget extends \Elementor\Widget_Base {
                ],
            ]
        );
+
+        $this->end_controls_section();
+        
+
+
+          $this->start_controls_section(
+            'porto_icon_header_menu',
+               [
+                   'label' => __( 'Icon', 'addons-porto' ),
+                   'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                  
+
+               ]
+             );
+             
+          
+          
+   
+            $this->add_control(
+                'porto_icon_float',
+                [
+                    'label' => __( 'Layout Section', 'addons-porto' ),
+                    'type' => \Elementor\Controls_Manager::SELECT,
+                    'default' => 'right',
+                    'options' => [
+                        'right'  => __( 'Right', 'addons-porto' ),
+                        'unset'  => __( 'Left', 'addons-porto' ),
+                     
+                       
+                    ],
+                ]
+           
+       );
+   
+    
+   
+     
+
+        $this->end_controls_section();
+
+
+
+
+         $this->start_controls_section(
+			'porto_content_section',
+			[
+				'label' => __( 'Icon', 'addons-porto' ),
+				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+
+            ]
+          );
+           $this->add_control(
+                'porto_icon_menu',
+                [
+                    'label' => __( 'Icon Menu', 'addons-porto' ),
+                    'type' => \Elementor\Controls_Manager::ICONS,
+                    
+                ]
+            );
+
+          
    
        
            $this->end_controls_section();
+
+
     
 }
 
@@ -243,47 +305,52 @@ class Elementor_Header_Widget extends \Elementor\Widget_Base {
         $settings = $this->get_settings_for_display();
         
         ?>
-           <style>
-            
-                            
-               <?php
-            
-                  if($settings['porto_width_header']=="fullwidth"){
-                      ?>
-                        .elementor-location-header div .elementor-section.elementor-section-boxed > .elementor-container {
-                                max-width: 100% !important;
-                            }
-                            .elementor-location-header div .elementor-section.elementor-section-boxed .elementor-column-gap-default > .elementor-row > .elementor-column > .elementor-element-populated {
-                                padding: 0 !important;
-                            }
-                            
+<style>
+<?php if($settings['porto_width_header']=="fullwidth") {
+    ?>.elementor-location-header div .elementor-section.elementor-section-boxed>.elementor-container {
+        max-width: 100% !important;
+    }
 
-                      <?php
-                  }else{ 
-                      ?>
-                           .elementor-section.elementor-section-boxed > .elementor-container {
-                                    max-width: 1140px !important;
-                                }
-                                .elementor-section.elementor-section-boxed .elementor-column-gap-default > .elementor-row > .elementor-column > .elementor-element-populated {
-                                    padding: 0 !important;
-                                }
-                                
-                      <?php
-                  }
-               ?>
-           </style>
-        <?php
+    .elementor-location-header div .elementor-section.elementor-section-boxed .elementor-column-gap-default>.elementor-row>.elementor-column>.elementor-element-populated {
+        padding: 0 !important;
+    }
+
+
+    <?php
+}
+
+else {
+    ?>.elementor-section.elementor-section-boxed>.elementor-container {
+        max-width: 1140px !important;
+    }
+
+    .elementor-section.elementor-section-boxed .elementor-column-gap-default>.elementor-row>.elementor-column>.elementor-element-populated {
+        padding: 0 !important;
+    }
+
+
+
+    <?php
+}
+
+?>.header-nav-toggle {
+    float: <?php echo $settings['porto_icon_float'];
+    ?>
+}
+</style>
+<?php
 
         header_porto_ele('menu-1' , $settings);
         
 		 if (\Elementor\Plugin::$instance->editor->is_edit_mode() ) : ?>
-     <script>
-  jQuery(document).ready(function($) {
+<script>
+jQuery(document).ready(function($) {
     var header = new Vue({
         el: '#header',
         data: {
-            info: [
-                { f_name: '' },
+            info: [{
+                    f_name: ''
+                },
 
 
             ],
@@ -310,7 +377,9 @@ class Elementor_Header_Widget extends \Elementor\Widget_Base {
 
 
                 },
-                error: function(e, ts, et) { console.log(ts); }
+                error: function(e, ts, et) {
+                    console.log(ts);
+                }
 
 
 
@@ -336,23 +405,25 @@ class Elementor_Header_Widget extends \Elementor\Widget_Base {
 
                         }
                     });
-                   
+
                 },
-                error: function(e, ts, et) { console.log(ts); }
+                error: function(e, ts, et) {
+                    console.log(ts);
+                }
 
 
 
             });
 
         },
-      
+
 
 
 
     })
- });
-     </script>
-       <?php endif; 
+});
+</script>
+<?php endif; 
 
     }
 }

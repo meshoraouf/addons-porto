@@ -1,4 +1,3 @@
-
 <?php
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -80,7 +79,20 @@ class Elementor_Home_Widget extends \Elementor\Widget_Base {
 
             ]
           );
-
+          $this->add_control(
+                'porto_layout_section',
+                [
+                    'label' => __( 'Layout Section', 'addons-porto' ),
+                    'type' => \Elementor\Controls_Manager::SELECT,
+                    'default' => 'default',
+                    'options' => [
+                        'default'  => __( 'default', 'addons-porto' ),
+                        'about'  => __( 'About', 'addons-porto' ),
+                        'skill' => __( 'Skill', 'addons-porto' ),
+                       
+                    ],
+                ]
+            );
           $this->end_controls_section();
 
     }
@@ -99,12 +111,12 @@ class Elementor_Home_Widget extends \Elementor\Widget_Base {
       
            
         
-         echo  $settings['porto_layout_section'];
-        //  get_style($settings['porto_layout_section']);
+         
+           get_section($settings);
            
         ?>
-       
-        <?php
+
+<?php
 
     }
  
